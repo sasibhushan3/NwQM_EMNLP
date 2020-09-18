@@ -48,28 +48,28 @@ while True:
         maxInt = int(maxInt/10)
 
 
-# Read train and test indices from command line for their sizes
-parser = argparse.ArgumentParser(description='Read train and test indices')
-parser.add_argument('train_indices', type=int, nargs=2,
-                    help='train indices')
-parser.add_argument('test_indices', type=int, nargs=2,
-                    help='test indices')
+# Command line arguments
+parser = argparse.ArgumentParser(description='Read Arguments for doc2vec model')
+parser.add_argument('--data_dir', type=str, nargs='?', default='wikipages_SplToken1.csv',
+                    help='dataset path')
+parser.add_argument('--num_epoch', type=int, nargs='?', default=55,
+                    help='Number of epochs for doc2vec model')
 args = parser.parse_args()
 
 
 # Pre-Process Data
-read_data = (readCsv('wikipages_SplToken1.csv'))
+read_data = (readCsv(args.data_dir))
 processed_data = list(readCorpus(read_data))
 total_num_obs = len(processed_data)
 
 
 # Divide the Data into train and test
-train_corpus = processed_data[args.train_indices[0]:args.train_indices[1]]
-test_corpus = processed_data[args.test_indices[0]:args.test_indices[1]]
+train_corpus = processed_data[0:20000]
+test_corpus = processed_data[24000:30000]
 
 
 # Train the doc2vec model using train corpus
-model = gensim.models.doc2vec.Doc2Vec(size=100, min_count=2, iter=55)
+model = gensim.models.doc2vec.Doc2Vec(size=100, min_count=2, iter=args.num_epoch)
 model.build_vocab(train_corpus)
 model.train(train_corpus, total_examples=model.corpus_count, epochs=model.iter)
 
