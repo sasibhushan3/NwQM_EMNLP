@@ -1,6 +1,6 @@
 
 ''' Code to run doc2vec model to generate doc2vec vector representation
-    of an wikipedia article/page and run Logistic Regression (or) Random
+    of a wikipedia article/page and run Logistic Regression (or) Random
     Forests to classify these vectors in the 6 Wikipedia Quality Classes
                     (FA, GA, B, C, Start, Stub)
 '''
@@ -12,6 +12,7 @@ import collections
 import random
 import sys
 import csv
+import argparse
 from math import floor, ceil
 from sklearn import preprocessing
 from sklearn import linear_model
@@ -47,14 +48,24 @@ while True:
         maxInt = int(maxInt/10)
 
 
+# Read train and test indices from command line for their sizes
+parser = argparse.ArgumentParser(description='Read train and test indices')
+parser.add_argument('train_indices', type=int, nargs=2,
+                    help='train indices')
+parser.add_argument('test_indices', type=int, nargs=2,
+                    help='test indices')
+args = parser.parse_args()
+
+
+# Pre-Process Data
 read_data = (readCsv('wikipages_SplToken1.csv'))
 processed_data = list(readCorpus(read_data))
 total_num_obs = len(processed_data)
 
 
 # Divide the Data into train and test
-train_corpus = processed_data[0:20000]
-test_corpus = processed_data[24000:30000]
+train_corpus = processed_data[args.train_indices[0]:args.train_indices[1]]
+test_corpus = processed_data[args.test_indices[0]:args.test_indices[1]]
 
 
 # Train the doc2vec model using train corpus
