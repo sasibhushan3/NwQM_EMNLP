@@ -3,7 +3,7 @@
 	of an wikipedia article/page and run Logistic Regression (or) Random
 	Forests to classify these vectors in the 6 Wikipedia Quality Classes
 					(FA, GA, B, C, Start, Stub)
-'''
+''' 
 import numpy as np
 import pandas as pd
 import gensim
