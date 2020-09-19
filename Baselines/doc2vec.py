@@ -50,7 +50,7 @@ while True:
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for doc2vec model')
-parser.add_argument('--data_dir', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
                     help='dataset path')
 parser.add_argument('--num_epoch', type=int, nargs='?', default=55,
                     help='Number of epochs for doc2vec model')
@@ -58,7 +58,7 @@ args = parser.parse_args()
 
 
 # Pre-Process Data
-read_data = (readCsv(args.data_dir))
+read_data = (readCsv(args.dataset_path))
 processed_data = list(readCorpus(read_data))
 total_num_obs = len(processed_data)
 
@@ -122,12 +122,12 @@ preds2 = randomfor.predict(test_x)
 
 
 # Results Obtained using Logistic Regression
-print("Accuracy obtained using logistic regression is : ",sum(preds == test_y) / len(test_y))
+print("Accuracy obtained using logistic regression is : ",sum(preds == test_y)*100/ len(test_y))
 print("Confusion Matrix of the results obtained using logistic regression is :")
 print(confusion_matrix(test_y, preds))
 
 
 # Results Obtained using Random Forests
-print("Accuracy obtained using random forests is : ",sum(preds2 == test_y) / len(test_y))
+print("Accuracy obtained using random forests is : ",sum(preds2 == test_y)*100/ len(test_y))
 print("Confusion Matrix of the results obtained using random forests is :")
 print(confusion_matrix(test_y, preds2))
