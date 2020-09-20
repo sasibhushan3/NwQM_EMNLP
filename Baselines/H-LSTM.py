@@ -4,7 +4,7 @@
     using BiLSTM model to classify into the 6 Wikipedia Quality Classes.
                     (FA, GA, B, C, Start, Stub)
 '''
-
+# Tensorflow Version 1.x
 import numpy as np
 import pandas as pd
 import re
@@ -345,7 +345,7 @@ for i in range(len(pred_labels)):
     if(pred_labels[i] == y_test[i]):
         num_matches +=1
 
-print("Accuracy obtained using History based LSTM model is : ",num_matches*100/len(pred_labels))
+print("Accuracy obtained using History based LSTM model is : ",round(num_matches*100/len(pred_labels),2))
 print("Confusion Matrix of the results obtained using History based LSTM model is :")
-confusion_matrix(y_test, pred_labels)
+print(confusion_matrix(y_test, pred_labels))
 
