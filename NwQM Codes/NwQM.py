@@ -100,7 +100,7 @@ parser.add_argument('--num_epoch', type=int, nargs='?', default=30,
                                         help='Number of epochs for NwQM model')
 parser.add_argument('--batch_size', type=int, nargs='?', default=32,
                                         help='Training batch size for NwQM model')
-parser.add_argument('--learning_rate', type=float, nargs='?', default=0.09,
+parser.add_argument('--learning_rate', type=float, nargs='?', default=0.01,
                                         help='Learning rate for NwQM model')
 args = parser.parse_args()
 
