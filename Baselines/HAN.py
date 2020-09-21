@@ -1,19 +1,12 @@
 
-''' This code implements the Hierarchical Attention Network (HAN) model with talk page representations
-    for Wikipedia Pages.
+''' This code implements the Hierarchical Attention Network (HAN) model for Wikipedia Pages.
 
     Wikipedia pages have a 4 level Hierarchy : words --> sentence (words combine to from a sentence),
     sentences --> paragraph, paragraphs --> section, sections --> page.
 
     We use glove embeddings for word representations. We then use this HAN to get sentence
     representation, followed by paragraph representation, section representation and finally get 
-    the page representation. 
-
-    Every Wikipedia page has a talk page, So we use Google Universal Sentence Encoder (Google USE)
-    model to get the talk page representation.
-
-    We then concatenate the page representation from HAN and talk page represntation from Google
-    USC and run a classification layer to classify into 6 Wikipedia classes.
+    the page representation. We then run a classification layer to classify into 6 Wikipedia classes.
                                 (FA, GA, B, C, Start, Stub)
 '''
 # Tensorflow Version 1.x
@@ -30,8 +23,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize, RegexpTokenizer
 import text_crawler as tc
 from sklearn.metrics import confusion_matrix
-from tensorflow import norm
-from tensorflow.keras.layers import multiply
 from tensorflow.keras.preprocessing.text import Tokenizer, text_to_word_sequence
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.utils import to_categorical
@@ -42,7 +33,7 @@ from tensorflow.keras import backend as K
 from tensorflow.keras import initializers
 from tensorflow.keras.layers import Layer, InputSpec
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import  Embedding, Dropout, GRU, Bidirectional, TimeDistributed, concatenate
+from tensorflow.keras.layers import  Embedding, Dropout, GRU, Bidirectional, TimeDistributed
 
 nltk.download('punkt')
 
@@ -97,18 +88,17 @@ class AttLayer(Layer):
 
 
 # Command line arguments
-parser = argparse.ArgumentParser(description='Read Arguments for Hierarchical Attention Network with talk model')
+parser = argparse.ArgumentParser(description='Read Arguments for Hierarchical Attention Network model')
 parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
-                                        help='dataset path')
+                    help='dataset path')
 parser.add_argument('--glove_embed', type=str, nargs='?', default='glove.6B.100d.txt',
-                                        help='path of Glove Embeddings')
-parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
-                                        help='path of generated talk page embeddings pckl file')
+                    help='path of Glove Embeddings')
 parser.add_argument('--num_epoch', type=int, nargs='?', default=10,
-                                        help='Number of epochs for HAN with talk model')
+                    help='Number of epochs for HAN model')
 parser.add_argument('--batch_size', type=int, nargs='?', default=32,
-                                        help='Training batch size for HAN with talk model')
+                    help='Training batch size for HAN model')
 args = parser.parse_args()
+
 
 
 # Read the Dataset
@@ -188,7 +178,6 @@ for i, sections in enumerate(list_pages):
                                 for _, word in enumerate(wordTokens):
                                     if(k < MAX_SENT_LENGTH):
                                         if word in tokenizer.word_index:
-                                        # print(i,j,l,m,k)
                                             if(tokenizer.word_index[word] < MAX_NB_WORDS):
                                                 data[i, j,l,m, k] = tokenizer.word_index[word]
                                                 k = k + 1
@@ -211,27 +200,14 @@ for i in range(len(df)):
         labels.append(5)
 labels = np.asarray(labels)
 
-
-# Load the talk page representations generated from Google USE model
-talk_data = np.zeros((len(df),512),dtype = 'float32')
-with open(args.talk_embed_path, 'rb') as g:
-    h = pk.load(g)
-for i in range(len(df)):
-    name = df['Name'][i]
-    talk_data[i] = h[name]
-
-
-
-
+# Divide the data into train, val and test data
 x_train = data[:20000]
-x_talk_train = talk_data[:20000]
 y_train = labels[:20000]
 x_val = data[20000:24000]
-x_talk_val = talk_data[20000:24000]
 y_val = labels[20000:24000]
 x_test = data[24000:30000]
-x_talk_test = talk_data[24000:30000]
 y_test = labels[24000:30000]
+
 
 # Load all the 100 dim Glove Embeddings to a Dictionary
 embeddings_index = {}
@@ -287,28 +263,21 @@ page_encoder = TimeDistributed(secEncoder)(page_input)
 l_lstm_sec = Bidirectional(GRU(100, return_sequences=True))(page_encoder)
 l_att_sec = AttLayer(100)(l_lstm_sec)
 
-# Add the Talk page represntation obtained from Google USE model
-talk_inp = Input(shape=(512,))
-talk_rep = Dense(200, activation='relu')(talk_inp)
+# 6 Class Classificiation Layer
+preds = Dense(6, activation='softmax')(l_att_sec)
 
-# Combine both representations and classify into 6 class model
-norm1 = norm(l_att_sec-talk_rep,ord =2,keepdims = True,axis = -1)
-final_rep = concatenate([l_att_sec,talk_rep,norm1],axis=-1)
-preds = Dense(6, activation='softmax')(final_rep)
-model = Model([page_input,talk_inp], preds)
-
+model = Model(page_input, preds)
 model.compile(loss='sparse_categorical_crossentropy',
             optimizer='adam', metrics=['acc'])
 
-print("model fitting - Hierachical attention network with talk page representations")
-model.fit([x_train,x_talk_train], y_train, validation_data=([x_val,x_talk_val], y_val),
-          nb_epoch=args.num_epoch, batch_size=args.batch_size)
+print("model fitting - Hierachical attention network")
+model.fit(x_train, y_train, validation_data=(x_val, y_val),nb_epoch=args.num_epoch, batch_size=args.batch_size)
 
 
 
 # Predict and Evaluate the model
-evaluate = model.evaluate([x_test,x_talk_test],y_test)
-y_pred = model.predict([x_test,x_talk_test])
+evaluate = model.evaluate(x_test,y_test)
+y_pred = model.predict(x_test)
 y_classes = y_pred.argmax(axis=-1)
 
 print("Accuracy obtained using Hierachical Attention Network model is : ",round(evaluate[1]*100,2))
