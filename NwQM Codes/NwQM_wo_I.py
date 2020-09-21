@@ -182,6 +182,6 @@ y_pred = model.predict([x_test,x_talk_test])
 y_classes = y_pred.argmax(axis=-1)
 
 print("Accuracy obtained using NwQM-w/oI model is : ",round(evaluate[1]*100,2))
-print("Confusion Matrix of the results obtained using NwQM model is :")
+print("Confusion Matrix of the results obtained using NwQM-w/oI model is :")
 print(confusion_matrix(y_test,y_classes))
 
