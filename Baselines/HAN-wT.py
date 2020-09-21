@@ -105,9 +105,9 @@ parser.add_argument('--glove_embed', type=str, nargs='?', default='glove.6B.100d
 parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
                                         help='path of generated talk page embeddings pckl file')
 parser.add_argument('--num_epoch', type=int, nargs='?', default=10,
-                                        help='Number of epochs for History based LSTM model')
+                                        help='Number of epochs for HAN with talk model')
 parser.add_argument('--batch_size', type=int, nargs='?', default=32,
-                                        help='Training batch size for History based LSTM model')
+                                        help='Training batch size for HAN with talk model')
 args = parser.parse_args()
 
 
@@ -221,7 +221,8 @@ for i in range(len(df)):
     talk_data[i] = h[name]
 
 
-# Divide the data into train, val and test data
+
+
 x_train = data[:20000]
 x_talk_train = talk_data[:20000]
 y_train = labels[:20000]
@@ -243,6 +244,7 @@ for line in f:
 f.close()
 
 word_index = tokenizer.word_index
+
 
 
 # Building Hierachical Attention Network Model
@@ -285,7 +287,6 @@ page_encoder = TimeDistributed(secEncoder)(page_input)
 l_lstm_sec = Bidirectional(GRU(100, return_sequences=True))(page_encoder)
 l_att_sec = AttLayer(100)(l_lstm_sec)
 
-
 # Add the Talk page represntation obtained from Google USE model
 talk_inp = Input(shape=(512,))
 talk_rep = Dense(200, activation='relu')(talk_inp)
@@ -297,12 +298,12 @@ preds = Dense(6, activation='softmax')(final_rep)
 model = Model([page_input,talk_inp], preds)
 
 model.compile(loss='sparse_categorical_crossentropy',
-                            optimizer='adam',
-                            metrics=['acc'])
+            optimizer='adam', metrics=['acc'])
 
 print("model fitting - Hierachical attention network with talk page representations")
 model.fit([x_train,x_talk_train], y_train, validation_data=([x_val,x_talk_val], y_val),
           nb_epoch=args.num_epoch, batch_size=args.batch_size)
+
 
 
 # Predict and Evaluate the model
