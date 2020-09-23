@@ -396,7 +396,7 @@ y_classes = y_pred.argmax(axis=-1)
 evaluate = model.evaluate([test_input_ids, test_input_masks, test_segment_ids],test_labels)
 
 print("Accuracy obtained using DocBERT model is : ",round(evaluate[1]*100,2))
-print("Confusion Matrix of the results obtained using DocBERT is :")
+print("Confusion Matrix of the results obtained using DocBERT model is :")
 print(confusion_matrix(test_labels,y_classes))
 
 
