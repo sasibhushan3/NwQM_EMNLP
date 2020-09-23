@@ -276,7 +276,8 @@ def build_model(max_seq_length, LearningRate, finetune_layers):
     in_mask = tf.keras.layers.Input(shape=(max_seq_length,), name="input_masks")
     in_segment = tf.keras.layers.Input(shape=(max_seq_length,), name="segment_ids")
     bert_inputs = [in_id, in_mask, in_segment]  
-    bert_output = BertLayer( n_fine_tune_layers=12, pooling="first",trainable = True)(bert_inputs)
+    bert_output = BertLayer(n_fine_tune_layers=finetune_layers,
+                            pooling="first",trainable = True)(bert_inputs)
     pred = tf.keras.layers.Dense(6, activation='sigmoid')(bert_output)
     optim = Adam(learning_rate=LearningRate, beta_1=0.9, beta_2=0.999, amsgrad=False)
     model = tf.keras.models.Model(inputs=bert_inputs, outputs=pred)
