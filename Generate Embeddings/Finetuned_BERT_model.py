@@ -323,7 +323,7 @@ df = df[0:30000]
 
 pages_text = []
 for k in range(30000):
-  pages_text.append(df['Clean_Text'][k])
+    pages_text.append(df['Clean_Text'][k])
 
 
 # Convert the labels of each page in Numerical Format
