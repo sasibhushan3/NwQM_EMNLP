@@ -298,7 +298,7 @@ parser = argparse.ArgumentParser(description='Read Arguments for Finetuned BERT 
 parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
                                         help='dataset path')
 parser.add_argument('--destination', type=str, nargs='?', default='finetuned_bert_model.h5',
-                                        help='Destination of saved Finetuned BERT Model')
+                                        help='Destination of saving Finetuned BERT Model')
 parser.add_argument('--max_seq_length', type=int, nargs='?', default=512,
                                         help='Maximum number of tokens for each page/document')
 parser.add_argument('--num_finetune_layers', type=int, nargs='?', default=12,
