@@ -31,7 +31,7 @@ embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 parser = argparse.ArgumentParser(description='Read Arguments for generating talk page embeddings')
 parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
                                         help='dataset path')
-parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
+parser.add_argument('--destination', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
                                         help='destination of generated talk page embeddings pckl file')
 
 args = parser.parse_args()
@@ -116,7 +116,7 @@ for i in range(len(list_sent)):
 
 
 # Save the Generated talk page embeddings as a pickle file
-with open(args.talk_embed_path, 'wb') as handle:
+with open(args.destination, 'wb') as handle:
     pickle.dump(dict1, handle)
 
 
