@@ -131,7 +131,7 @@ for i in page_names:
         dataset_indices.append(c)
         image_labels.append(df['Label'][c])
         avail_images.append(df['Name'][c])
-  c=c+1
+    c=c+1
 
 
 # Convert the labels of each page in Numerical Format
