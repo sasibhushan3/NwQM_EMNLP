@@ -29,9 +29,9 @@ embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for generating talk page embeddings')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                                         help='dataset path')
-parser.add_argument('--destination', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
+parser.add_argument('--destination', type=str, nargs='?', default='talkpage_embeddings.pckl',
                                         help='destination of generated talk page embeddings pckl file')
 
 args = parser.parse_args()
