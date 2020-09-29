@@ -243,7 +243,7 @@ def extract_features(n, pages_list, page_labels, num_features, files_path):
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for History based LSTM model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                     help='dataset path')
 parser.add_argument('--files_path', type=str, nargs='?', default='wiki_files/',
                     help='wikipedia pages path')
