@@ -88,7 +88,7 @@ class AttLayer(Layer):
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for NwQM model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                                         help='dataset path')
 parser.add_argument('--text_embed_path', type=str, nargs='?', default='finetuned_bert_embeddings.pckl',
                                         help='path of generated text embeddings pckl file')
