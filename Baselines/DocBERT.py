@@ -199,13 +199,14 @@ def convert_single_example(tokenizer, example, max_seq_length=512):
         if the number of tokens exceed 510.
     '''
     if(len1 > 510):
-      for k in range(128):
-        token_t.append(tokens_a[k])
-      for k in range(382):
-        token_t.append(tokens_a[len1+k-382])
+        for k in range(128):
+            token_t.append(tokens_a[k])
+        for k in range(382):
+            token_t.append(tokens_a[len1+k-382])
     else:
-      for k in range(len1):
-        token_t.append(tokens_a[k])
+        for k in range(len1):
+            token_t.append(tokens_a[k])
+
     if len(token_t) > max_seq_length - 2:
         tokens_a = token_t[0 : (max_seq_length - 2)]
     tokens_a = token_t
@@ -294,7 +295,7 @@ def initialize_vars(sess):
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for DocBERT model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                                         help='dataset path')
 parser.add_argument('--max_seq_length', type=int, nargs='?', default=512,
                                         help='Maximum number of tokens for each page/document')
@@ -320,7 +321,7 @@ df = df[0:30000]
 
 pages_text = []
 for k in range(30000):
-  pages_text.append(df['Clean_Text'][k])
+    pages_text.append(df['Clean_Text'][k])
 
 
 # Convert the labels of each page in Numerical Format
