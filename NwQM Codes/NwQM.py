@@ -90,11 +90,11 @@ class AttLayer(Layer):
 parser = argparse.ArgumentParser(description='Read Arguments for NwQM model')
 parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
                                         help='dataset path')
-parser.add_argument('--text_embed_path', type=str, nargs='?', default='ftune_bert_3_epochs.pckl',
+parser.add_argument('--text_embed_path', type=str, nargs='?', default='finetuned_bert_embeddings.pckl',
                                         help='path of generated text embeddings pckl file')
-parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
+parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talkpage_embeddings.pckl',
                                         help='path of generated talk page embeddings pckl file')
-parser.add_argument('--image_embed_path', type=str, nargs='?', default='finetuned_inception_embeddings.pckl',
+parser.add_argument('--image_embed_path', type=str, nargs='?', default='finetuned_inceptionv3_embeddings.pckl',
                                         help='path of generated image embeddings pckl file')
 parser.add_argument('--num_epoch', type=int, nargs='?', default=30,
                                         help='Number of epochs for NwQM model')
@@ -121,7 +121,7 @@ for i in range(len(df)):
 # Load the talk page representations generated from Google USE model
 talk_data = np.zeros((len(df),512),dtype = 'float32')
 with open(args.talk_embed_path, 'rb') as g:
-    h = pk.load(g)
+    h = pickle.load(g)
 
 for i in range(len(df)):
     name = df['Name'][i]
@@ -184,12 +184,12 @@ data = np.array(temp)
 
 temp = []
 for i in page_index:
-  temp.append(talk_data[i])
+    temp.append(talk_data[i])
 talk_data = np.array(temp)
 
 temp = []
 for i in page_index:
-  temp.append(labels[i])
+    temp.append(labels[i])
 labels = np.array(temp)
 
 
