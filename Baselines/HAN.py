@@ -89,7 +89,7 @@ class AttLayer(Layer):
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for Hierarchical Attention Network model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                     help='dataset path')
 parser.add_argument('--glove_embed', type=str, nargs='?', default='glove.6B.100d.txt',
                     help='path of Glove Embeddings')
