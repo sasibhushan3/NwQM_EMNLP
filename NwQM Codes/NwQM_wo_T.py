@@ -86,11 +86,11 @@ class AttLayer(Layer):
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for NwQM-w/oT model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                                         help='dataset path')
-parser.add_argument('--text_embed_path', type=str, nargs='?', default='ftune_bert_3_epochs.pckl',
+parser.add_argument('--text_embed_path', type=str, nargs='?', default='finetuned_bert_embeddings.pckl',
                                         help='path of generated text embeddings pckl file')
-parser.add_argument('--image_embed_path', type=str, nargs='?', default='finetuned_inception_embeddings.pckl',
+parser.add_argument('--image_embed_path', type=str, nargs='?', default='finetuned_inceptionv3_embeddings.pckl',
                                         help='path of generated image embeddings pckl file')
 parser.add_argument('--num_epoch', type=int, nargs='?', default=30,
                                         help='Number of epochs for NwQM-w/oT model')
@@ -170,7 +170,7 @@ data = np.array(temp)
 
 temp = []
 for i in page_index:
-  temp.append(labels[i])
+    temp.append(labels[i])
 labels = np.array(temp)
 
 
