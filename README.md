@@ -2,7 +2,6 @@
 Implementation of the paper NwQM: A neural quality assessment framework for Wikipedia
 
 Organization of the folder
-1. Preprocessing - preprocess the raw data files to required format as described in the paper.
-2. Baselines - The ORES++ models that are described in the paper are implemented here.
-3. Category experiments - The character, word, both, attention modules are implemented. Transfer learning is also implemented.
-4. Big dataset - The same experiments as in category but scaled up for the big dataset. The retraining module is modified to handle for the files in a folder.
+1. Baselines - The Baseline models described in the paper are implemented here.
+2. Generate Embeddings - This folder contains the codes for generating the Finetuned BERT Embeddings for text pages, Google USE Embeddings for talk pages, Finetuned InceptionV3 Embeddings for Images.
+3. NwQM Codes - The different NwQM Models such as NwQM, NwQM-w/oI (without Images), NwQM-w/oT (without Talk pages),NwQM-w/oTI (without Talk Pages and Images) are implemented here.
