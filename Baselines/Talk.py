@@ -16,9 +16,9 @@ from tensorflow.keras.models import Model
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for Talk model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                                         help='dataset path')
-parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talk_pgs_google_usc_emb.pckl',
+parser.add_argument('--talk_embed_path', type=str, nargs='?', default='talkpage_embeddings.pckl',
                                         help='path of generated talk page embeddings pckl file')
 parser.add_argument('--num_epoch', type=int, nargs='?', default=30,
                                         help='Number of epochs for Talk model')
