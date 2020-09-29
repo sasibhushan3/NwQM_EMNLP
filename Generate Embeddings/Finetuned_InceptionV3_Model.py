@@ -91,7 +91,7 @@ def create_model():
 
 # Command line arguments
 parser = argparse.ArgumentParser(description='Read Arguments for Finetuned InceptionV3 model')
-parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages_SplToken1.csv',
+parser.add_argument('--dataset_path', type=str, nargs='?', default='wikipages.csv',
                                         help='dataset path')
 parser.add_argument('--images_path', type=str, nargs='?', default='wiki_images/',
                                         help='path of the folder containing images of the pages')
