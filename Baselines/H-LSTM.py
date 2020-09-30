@@ -1,7 +1,7 @@
 
 ''' Code to run History Based LSTM model, which extracts the content and meta features
     from given number of revisions (History) of each page and combines these features
-    using BiLSTM model to classify into the 6 Wikipedia Quality Classes.
+    using LSTM to classify into the 6 Wikipedia Quality Classes.
                     (FA, GA, B, C, Start, Stub)
 '''
 # Tensorflow Version 1.x
