@@ -1,3 +1,15 @@
+@import '@primer/css/utilities/index.scss';
+@import 'primer-buttons/index.scss';
+// Import color variables for custom code
+@import 'primer-support/index.scss';
+// Override default blue
+$blue: #0000ff;
+@import './custom-that-uses-primer-variables.scss';
+.foo {
+  background: $blue;
+  font-size: $h2-size;
+  color: $text-gray;
+}
 ## Baselines
 
 <newline>text<newline>
