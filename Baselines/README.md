@@ -9,7 +9,7 @@
 <a class="link-gray-dark"  href="#url">link-gray-dark</a>
 
 #### Baselines Implemented
-`1. doc2vec.py - Implements the Doc2vec model and classifies using Logistic Regression and Random Forests
+`1. doc2vec.py - Implements the Doc2vec model and classifies using Logistic Regression and Random Forests <newline>
 2. H-LSTM.py  - Implements the History Based LSTM model, which extracts the content and meta features from the revisions (History) of each page and classifies using LSTM.`
 
 
