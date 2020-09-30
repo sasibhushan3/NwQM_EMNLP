@@ -1,60 +1,17 @@
-@import '@primer/css/utilities/index.scss';
-@import 'primer-buttons/index.scss';
-// Import color variables for custom code
-@import 'primer-support/index.scss';
-// Override default blue
-$blue: #0000ff;
-@import './custom-that-uses-primer-variables.scss';
-.foo {
-  background: $blue;
-  font-size: $h2-size;
-  color: $text-gray;
-}
-## Baselines
 
-<newline>text<newline>
-<div class="bg-yellow mb-2">
-  .text-gray-dark on .bg-yellow
-</div>
-
-
-<a class="link-gray-dark"  href="#url">link-gray-dark</a>
 
 #### Baselines Implemented
-`1. doc2vec.py - Implements the Doc2vec model and classifies using Logistic Regression and Random Forests <newline>
-2. H-LSTM.py  - Implements the History Based LSTM model, which extracts the content and meta features from the revisions (History) of each page and classifies using LSTM.`
+1. doc2vec.py     - Implements the Doc2vec model and classifies using Logistic Regression and Random Forests.
+2. H-LSTM.py      - Implements the History Based LSTM model, which extracts the content and meta features from the revisions (History) of each page and classifies using LSTM.
+3. HAN.py         - Implements the 4 level Hierarchical Attention Network (HAN) model for Wikipedia Pages.
+4. HAN-wT.py      - Implements the 4 level Hierarchical Attention Network (HAN) model with talk page representations for Wikipedia Pages.
+5. DocBERT.py     - Implements the DocBERT model where we tokenize each page (into BERT readable format) and pass the tokenized input to BERT model and finetune the BERT model for                     classification.
+6. DocBERT-wT.py  - Implements the DocBERT with talk model where we add the talk page representation to the BERT representation and finetune the BERT model for                                         classification.
+7. InceptionV3.py - Implements the InceptionV3 model which uses the image (screenshot) of each page and is finetuned for classification.
+8. M-BILSTM.py    - Implements the joint model where we use BILSTM to get the text page representation and Finetuned InceptionV3 model for the image representation and combined                       together for classification.
+9. Talk.py        - Implement the classification task by considering only the talk pages for each page.
 
 
-
-<div class="text-blue mb-2">
-  .text-blue on white
-</div>
-<div class="text-gray-dark mb-2">
-  .text-gray-dark on white
-</div>
-<div class="text-gray mb-2">
-  .text-gray on white
-</div>
-<div class="text-red mb-2">
-  .text-red on white
-</div>
-<div class="text-orange mb-2">
-  .text-orange on white
-</div>
-<span class="float-left text-red tooltipped tooltipped-n" aria-label="Does not meet accessibility standards"><%= octicon("alert") %></span>
-<div class="text-orange-light mb-2">
-  .text-orange-light on white
-</div>
-<span class="float-left text-red tooltipped tooltipped-n" aria-label="Does not meet accessibility standards"><%= octicon("alert") %></span>
-<div class="text-green mb-2 ml-4">
-  .text-green on white
-</div>
-<div class="text-purple mb-2">
-  .text-purple on white
-</div>
-  
-  
-Use `git status` to list all new or modified files that haven't yet been committed.
 #### doc2vec.py
 
 <newline> usage: doc2vec.py [-h] [--dataset_path [DATASET_PATH]] [--num_epoch [NUM_EPOCH]]
