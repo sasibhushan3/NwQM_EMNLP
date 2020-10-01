@@ -14,6 +14,7 @@
 ```
 
 #### doc2vec.py
+To Run
 ```
 usage: doc2vec.py [-h] [--dataset_path [DATASET_PATH]] [--num_epoch [NUM_EPOCH]]
 
