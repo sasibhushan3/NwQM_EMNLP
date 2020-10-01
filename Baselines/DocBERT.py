@@ -7,7 +7,8 @@
 '''
 # Tensorflow Version 1.x
 import numpy as np
-import pandas as pd 
+import pandas as pd
+import argparse
 from tqdm import tqdm_notebook
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -20,7 +21,7 @@ from sklearn.metrics import confusion_matrix
 sess = tf.Session()
 
 class PaddingInputExample(object):
-"""Fake example so the num input examples is a multiple of the batch size.
+    """Fake example so the num input examples is a multiple of the batch size.
    When running eval/predict on the TPU, we need to pad the number of examples
    to be a multiple of the batch size, because the TPU requires a fixed batch
    size. The alternative is to drop the last batch, which is bad because it means
@@ -33,7 +34,7 @@ class PaddingInputExample(object):
 # A single training/test example for simple sequence classification.
 class InputExample(object):
     def __init__(self, guid, text_a, text_b=None, label=None):
-    """Constructs a InputExample.
+        """Constructs a InputExample.
         Args:
           guid: Unique id for the example.
           text_a: string. The untokenized text of the first sequence. For single
