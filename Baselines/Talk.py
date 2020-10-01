@@ -10,6 +10,7 @@
 import numpy as np
 import pandas as pd
 import pickle
+import argparse
 from tensorflow.keras.layers import Dense, Input
 from tensorflow.keras.models import Model
 
@@ -24,6 +25,7 @@ parser.add_argument('--num_epoch', type=int, nargs='?', default=30,
                                         help='Number of epochs for Talk model')
 parser.add_argument('--batch_size', type=int, nargs='?', default=32,
                                         help='Training batch size for Talk model')
+args = parser.parse_args()
 
 # Read the Dataset
 df = pd.read_csv(args.dataset_path)
