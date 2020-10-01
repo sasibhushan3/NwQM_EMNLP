@@ -138,4 +138,25 @@ optional arguments:
                         Training batch size for DocBERT with talk model
   --learning_rate [LEARNING_RATE]
                         Learning rate for DocBERT with talk model
-```                        
+``` 
+#### InceptionV3.py
+To Run
+```
+usage: InceptionV3.py [-h] [--dataset_path [DATASET_PATH]] [--images_path [IMAGES_PATH]] [--num_epoch [NUM_EPOCH]]
+                      [--batch_size [BATCH_SIZE]] [--learning_rate [LEARNING_RATE]]
+
+Read Arguments for InceptionV3 model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --images_path [IMAGES_PATH]
+                        path of the folder containing images of the pages
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for InceptionV3 model
+  --batch_size [BATCH_SIZE]
+                        Batch size of the Generator Object
+  --learning_rate [LEARNING_RATE]
+                        Learning rate for InceptionV3 model
+```
