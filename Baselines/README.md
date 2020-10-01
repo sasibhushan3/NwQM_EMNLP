@@ -27,3 +27,25 @@ optional arguments:
   --num_epoch [NUM_EPOCH]
                         Number of epochs for doc2vec model
 ```
+#### H-LSTM.py
+To Run
+```
+usage: H-LSTM.py [-h] [--dataset_path [DATASET_PATH]] [--files_path [FILES_PATH]] [--num_revisions [NUM_REVISIONS]]
+                 [--only_cont] [--num_epoch [NUM_EPOCH]] [--batch_size [BATCH_SIZE]]
+
+Read Arguments for History based LSTM model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --files_path [FILES_PATH]
+                        wikipedia pages path
+  --num_revisions [NUM_REVISIONS]
+                        Number of revisions for each page
+  --only_cont           If true use only content features else use both content and meta features
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for History based LSTM model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for History based LSTM model
+```  
