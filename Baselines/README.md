@@ -68,3 +68,24 @@ optional arguments:
   --batch_size [BATCH_SIZE]
                         Training batch size for HAN model
 ```
+#### HAN-wT.py
+To Run
+```
+usage: HAN-wT.py [-h] [--dataset_path [DATASET_PATH]] [--glove_embed [GLOVE_EMBED]]
+                 [--talk_embed_path [TALK_EMBED_PATH]] [--num_epoch [NUM_EPOCH]] [--batch_size [BATCH_SIZE]]
+
+Read Arguments for Hierarchical Attention Network with talk model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --glove_embed [GLOVE_EMBED]
+                        path of Glove Embeddings
+  --talk_embed_path [TALK_EMBED_PATH]
+                        path of generated talk page embeddings pckl file
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for HAN with talk model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for HAN with talk model
+```
