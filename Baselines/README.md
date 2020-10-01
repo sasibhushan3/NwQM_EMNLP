@@ -6,10 +6,10 @@
 2. H-LSTM.py      - Implements the History Based LSTM model, which extracts the content and meta features from the revisions (History) of each page and classifies using LSTM.
 3. HAN.py         - Implements the 4 level Hierarchical Attention Network (HAN) model for Wikipedia Pages.
 4. HAN-wT.py      - Implements the 4 level Hierarchical Attention Network (HAN) model with talk page representations for Wikipedia Pages.
-5. DocBERT.py     - Implements the DocBERT model where we tokenize each page (into BERT readable format) and pass the tokenized input to BERT model and finetune the BERT model for                     classification.
-6. DocBERT-wT.py  - Implements the DocBERT with talk model where we add the talk page representation to the BERT representation and finetune the BERT model for                                         classification.
+5. DocBERT.py     - Implements the DocBERT model where we tokenize each page (into BERT readable format) and pass the tokenized input to BERT model and finetune the BERT model for classification.
+6. DocBERT-wT.py  - Implements the DocBERT with talk model where we add the talk page representation to the BERT representation and finetune the BERT model for classification.
 7. InceptionV3.py - Implements the InceptionV3 model which uses the image (screenshot) of each page and is finetuned for classification.
-8. M-BILSTM.py    - Implements the joint model where we use BILSTM to get the text page representation and Finetuned InceptionV3 model for the image representation and combined                       together for classification.
+8. M-BILSTM.py    - Implements the joint model where we use BILSTM to get the text page representation and Finetuned InceptionV3 model for the image representation and combined together for classification.
 9. Talk.py        - Implement the classification task by considering only the talk pages for each page.
 ```
 
