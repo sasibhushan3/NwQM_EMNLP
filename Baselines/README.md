@@ -14,8 +14,8 @@
 ```
 
 #### doc2vec.py
-
-<newline> usage: doc2vec.py [-h] [--dataset_path [DATASET_PATH]] [--num_epoch [NUM_EPOCH]]
+```
+usage: doc2vec.py [-h] [--dataset_path [DATASET_PATH]] [--num_epoch [NUM_EPOCH]]
 
 Read Arguments for doc2vec model
 
@@ -24,4 +24,5 @@ optional arguments:
   --dataset_path [DATASET_PATH]
                         dataset path
   --num_epoch [NUM_EPOCH]
-                        Number of epochs for doc2vec model  <newline>
+                        Number of epochs for doc2vec model
+```
