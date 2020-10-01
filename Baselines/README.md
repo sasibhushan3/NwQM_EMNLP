@@ -89,3 +89,27 @@ optional arguments:
   --batch_size [BATCH_SIZE]
                         Training batch size for HAN with talk model
 ```
+#### DocBERT.py
+To Run
+```
+usage: DocBERT.py [-h] [--dataset_path [DATASET_PATH]] [--max_seq_length [MAX_SEQ_LENGTH]]
+                  [--num_finetune_layers [NUM_FINETUNE_LAYERS]] [--num_epoch [NUM_EPOCH]] [--batch_size [BATCH_SIZE]]
+                  [--learning_rate [LEARNING_RATE]]
+
+Read Arguments for DocBERT model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --max_seq_length [MAX_SEQ_LENGTH]
+                        Maximum number of tokens for each page/document
+  --num_finetune_layers [NUM_FINETUNE_LAYERS]
+                        Number of layers to be finetuned for BERT Model
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for DocBERT model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for DocBERT model
+  --learning_rate [LEARNING_RATE]
+                        Learning rate for DocBERT model
+```                        
