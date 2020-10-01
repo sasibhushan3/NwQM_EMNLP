@@ -113,3 +113,29 @@ optional arguments:
   --learning_rate [LEARNING_RATE]
                         Learning rate for DocBERT model
 ```                        
+#### DocBERT-wT.py
+To Run
+```
+usage: DocBERT-wT.py [-h] [--dataset_path [DATASET_PATH]] [--talk_embed_path [TALK_EMBED_PATH]]
+                     [--max_seq_length [MAX_SEQ_LENGTH]] [--num_finetune_layers [NUM_FINETUNE_LAYERS]]
+                     [--num_epoch [NUM_EPOCH]] [--batch_size [BATCH_SIZE]] [--learning_rate [LEARNING_RATE]]
+
+Read Arguments for DocBERT with talk model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --talk_embed_path [TALK_EMBED_PATH]
+                        path of generated talk page embeddings pckl file
+  --max_seq_length [MAX_SEQ_LENGTH]
+                        Maximum number of tokens for each page/document
+  --num_finetune_layers [NUM_FINETUNE_LAYERS]
+                        Number of layers to be finetuned for BERT Model
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for DocBERT with talk model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for DocBERT with talk model
+  --learning_rate [LEARNING_RATE]
+                        Learning rate for DocBERT with talk model
+```                        
