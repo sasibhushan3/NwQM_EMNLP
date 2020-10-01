@@ -183,4 +183,23 @@ optional arguments:
                         Training batch size for M-BILSTM model
   --learning_rate [LEARNING_RATE]
                         Learning rate for M-BILSTM model
+``` 
+#### Talk.py
+To Run
+```
+usage: Talk.py [-h] [--dataset_path [DATASET_PATH]] [--talk_embed_path [TALK_EMBED_PATH]] [--num_epoch [NUM_EPOCH]]
+               [--batch_size [BATCH_SIZE]]
+
+Read Arguments for Talk model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --talk_embed_path [TALK_EMBED_PATH]
+                        path of generated talk page embeddings pckl file
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for Talk model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for Talk model
 ```                        
