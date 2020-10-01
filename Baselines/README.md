@@ -49,3 +49,22 @@ optional arguments:
   --batch_size [BATCH_SIZE]
                         Training batch size for History based LSTM model
 ```  
+#### HAN.py
+To Run
+```
+usage: HAN.py [-h] [--dataset_path [DATASET_PATH]] [--glove_embed [GLOVE_EMBED]] [--num_epoch [NUM_EPOCH]]
+              [--batch_size [BATCH_SIZE]]
+
+Read Arguments for Hierarchical Attention Network model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --glove_embed [GLOVE_EMBED]
+                        path of Glove Embeddings
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for HAN model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for HAN model
+```
