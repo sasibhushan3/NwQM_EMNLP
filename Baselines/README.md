@@ -1,6 +1,7 @@
 
 
 #### Baselines Implemented
+```
 1. doc2vec.py     - Implements the Doc2vec model and classifies using Logistic Regression and Random Forests.
 2. H-LSTM.py      - Implements the History Based LSTM model, which extracts the content and meta features from the revisions (History) of each page and classifies using LSTM.
 3. HAN.py         - Implements the 4 level Hierarchical Attention Network (HAN) model for Wikipedia Pages.
@@ -10,7 +11,7 @@
 7. InceptionV3.py - Implements the InceptionV3 model which uses the image (screenshot) of each page and is finetuned for classification.
 8. M-BILSTM.py    - Implements the joint model where we use BILSTM to get the text page representation and Finetuned InceptionV3 model for the image representation and combined                       together for classification.
 9. Talk.py        - Implement the classification task by considering only the talk pages for each page.
-
+```
 
 #### doc2vec.py
 
