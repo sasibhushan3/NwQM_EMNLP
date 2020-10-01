@@ -160,3 +160,27 @@ optional arguments:
   --learning_rate [LEARNING_RATE]
                         Learning rate for InceptionV3 model
 ```
+#### M-BILSTM.py
+To Run
+```
+usage: M-BILSTM.py [-h] [--dataset_path [DATASET_PATH]] [--image_embed_path [IMAGE_EMBED_PATH]]
+                   [--glove_embed [GLOVE_EMBED]] [--num_epoch [NUM_EPOCH]] [--batch_size [BATCH_SIZE]]
+                   [--learning_rate [LEARNING_RATE]]
+
+Read Arguments for M-BILSTM model
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dataset_path [DATASET_PATH]
+                        dataset path
+  --image_embed_path [IMAGE_EMBED_PATH]
+                        path of generated image embeddings pckl file
+  --glove_embed [GLOVE_EMBED]
+                        path of Glove Embeddings
+  --num_epoch [NUM_EPOCH]
+                        Number of epochs for M-BILSTM model
+  --batch_size [BATCH_SIZE]
+                        Training batch size for M-BILSTM model
+  --learning_rate [LEARNING_RATE]
+                        Learning rate for M-BILSTM model
+```                        
