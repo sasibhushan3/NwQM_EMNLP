@@ -1,4 +1,14 @@
 
+This section contains the codes of different types of NwQM models. Since NwQM uses the representations of Text pages, Talk pages and Images, we tried different combinations of the representations to prove that combining these 3 representations gives the best results.
+
+#### NwQM Codes
+```
+1. NwQM.py       - Implements the NwQM model.
+2. NwQM_wo_I.py  - Implements the NwQM-w/oI model (without Images). It only considers Text and Talk page representations.
+3. NwQM_wo_T.py  - Implements the NwQM-w/oT model (without Talk pages). It only considers Text page and Image representations.
+4. NwQM_wo_TI.py - Implements the NwQM-w/oTI model (without Talk pages and images). It only considers the Text page representations.
+```
+
 
 #### NwQM.py
 To Run
