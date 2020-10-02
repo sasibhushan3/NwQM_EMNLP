@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 import re
 import pickle
+import argparse
 import text_crawler as tc
 import tensorflow as tf
 import tensorflow_hub as hub
