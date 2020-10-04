@@ -16,7 +16,7 @@
 # Tensorflow Version 1.x
 import numpy as np
 import pandas as pd
-import pickle as pk
+import pickle
 import re
 import sys
 import os
@@ -108,7 +108,7 @@ df = pd.read_csv(args.dataset_path)
 # Load the generated finetuned bert embeddings of each each page
 data = np.zeros((len(df),MAX_SECS,EMBED_DIM), dtype='float32')
 with open(args.text_embed_path, 'rb') as g:
-    h = pk.load(g)
+    h = pickle.load(g)
 
 for i in range(len(df)):
     name = df['Name'][i]
@@ -117,7 +117,7 @@ for i in range(len(df)):
 
 # Load the image representations generated from Finetuned InceptionV3 model
 with open(args.image_embed_path, 'rb') as g:
-    h = pk.load(g)
+    h = pickle.load(g)
 
 
 # Pages which have image embeddings
