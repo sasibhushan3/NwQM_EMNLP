@@ -1,5 +1,5 @@
 # NwQM
-Implementation of the paper NwQM: A neural quality assessment framework for Wikipedia
+Implementation of the paper NwQM: A neural quality assessment framework for Wikipedia, EMNLP 2020
 
 #### Organization of the folder
 ```
